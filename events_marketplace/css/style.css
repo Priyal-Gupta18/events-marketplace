@@ -1,0 +1,809 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Times New Roman', Times, serif;
+    vertical-align: baseline;
+}
+
+
+.navbar-nav a.active {
+    color: #ff6347; /* Change the color of active navbar link */
+}
+
+
+/* Global Styles */
+body {
+    font-family: 'Times New Roman', Times, serif;
+    line-height: 1.6;
+    /* background: linear-gradient(-225deg, #E3FDF5 0%, #FFE6FA 100%); */
+    color: #0d0c0c;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+main{
+    margin-top: 7vh;
+    scroll-snap-type: y mandatory; /* Vertical scrolling with snap */
+    overflow-y: scroll;
+    height: 90vh;
+
+    
+    
+}
+/* Define scroll snap alignment for each section */
+header, .about, .services {
+    scroll-snap-align: start; /* Snap the scrolling to the start of each section */
+}
+
+
+/* Header */
+.hero {
+    
+    background-color: rgb(18, 86, 85);
+    background-size: cover; /* Cover the entire header section */
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    height: 90vh;
+    animation: fadeIn 2s ease-in-out;
+    
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0.1;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.hero h1 {
+    font-size: 48px; /* Increase font size for welcome text */
+    animation: slideInFromLeft 1s ease-out; 
+}
+
+
+@keyframes slideInFromLeft {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+.hidden {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateX(-100%);
+    transition: all 1s;
+}
+
+.show {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateX(0);
+    animation: fadeIn 1s ease-in-out; /* Apply fadeIn animation to all elements */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+
+/* About Section */
+.about {
+    display: flex;
+    background-color: rgb(79, 199, 141);
+    align-items: center;
+    margin: 0;
+    height: 90vh;
+    
+}
+.about h2{
+    text-align: center;
+    font-style: italic;
+    font-size: 45px;
+    font-weight: 500;
+    font-family: 'Times New Roman', Times, serif;
+    animation: slideInFromLeft 1s ease-out; 
+}
+
+.about-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-text {
+    flex: 1; /* Take remaining space */
+    padding: 0 20px; 
+}
+
+.about-image {
+    flex: 1; /* Take remaining space */
+    max-width: 400px; /* Set max-width of image box */
+}
+
+.about-image img {
+    width: 100%;
+    height: auto;
+    display: block; /* Ensure image fills the container */
+    max-width: 100%; /* Ensure image does not exceed container width */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow for visual effect */
+}
+
+
+/* Our Services Section of home page */
+/* Style for the service categories */
+.services{
+    background-color: #0d0c0c;
+    
+}
+
+.services h2{
+    color: #ccc;
+}
+
+
+.service-category:hover {
+    transform: scale(1.05); /* Scale up on hover */
+}
+
+/* Update the styles for the images in service category boxes */
+.service-category img {
+    width: 100%; /* Make the image fill the container */
+    height: 200px; /* Set a fixed height for the image */
+    object-fit: cover; 
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+
+.service-category h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    
+}
+
+.service-category p {
+    font-size: 14px;
+    color: #ffffff;
+    margin-bottom: 15px;
+}
+
+/* Update the styles for the service categories container */
+.service-categories {
+    display: flex;
+    overflow-x: auto; /* Enable horizontal scrolling */
+    gap: 20px; /* Gap between each service category */
+    padding: 20px 0; /* Add some padding */
+    position: relative; /* Set the container position to relative */
+}
+
+/* Update the styles for each service category */
+.service-category {
+    flex: 0 0 calc(25% - 20px); /* Adjust the width to fit four items in a row */
+    max-width: 300px; /* Limit the width of each category */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    height: 400px;
+    padding: 20px;
+    background-color: #585a59;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    margin-right: 20px; /* Add margin to create space between categories */
+    position: relative; /* Set the position to relative */
+}
+
+/* Update the styles for the Browse Category button */
+.service-category .btn {
+    position: absolute; /* Set the position to absolute */
+    bottom: 10px; /* Position the button at the bottom */
+    left: 50%; /* Center the button horizontally */
+    transform: translateX(-50%); /* Adjust to center the button */
+    width: calc(100% - 20px); /* Adjust the width to match the container */
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 0;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+
+.service-category .btn:hover {
+    background-color: #0056b3;
+}
+
+/* Hide horizontal scrollbar */
+.service-categories::-webkit-scrollbar {
+    display: none;
+}
+
+
+
+
+
+
+
+/* Navbar Styles */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2vh;
+    background-color: #2c1e4c;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    z-index: 1000;
+}
+
+.navbar-brand {
+    font-size: 24px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.navbar-nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-end; /* Align items to the right */
+}
+
+.nav-item {
+    margin-right: 20px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    padding: 10px;
+    transition: background-color 0.3s ease;
+    animation: fadeIn 2s ease-in-out; /* Add animation for navbar links */
+}
+
+.nav-link:hover {
+    background-color: #555;
+}
+
+
+/* Footer Styles */
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1vh;
+    background-color: #2c1e4c;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    
+}
+
+/* Animated Buttons */
+.btn {
+    display: inline-block;
+    background-color: #007bff;
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    animation: fadeIn 2s ease-in-out; 
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.btn-outline {
+    border: 2px solid #fff;
+    background-color: transparent;
+}
+
+.btn-outline:hover {
+    background-color: #fff;
+    color: #333;
+}
+
+/* Center text and style forms */
+
+
+section, form {
+    height: 90vh;
+    text-align: center;
+    align-items: center;
+    padding: 20px;
+    
+}
+form {
+    max-width: 400px;
+    max-height:420px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+   
+}
+
+
+input, textarea, select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #555;
+}
+/* Center the forms */
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.registration-form,
+.login-form {
+    max-width: 400px;
+    /* max-height: 420px; */
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Highlight the login link in the registration form */
+.registration-form .login-link {
+    color: #007bff;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.registration-form .login-link:hover {
+    color: #0056b3;
+}
+
+
+
+
+
+
+
+
+
+/* Styles for Create Service Form */
+.create-service-form {
+    max-width: 500px;
+    width: 100%;
+    min-height: 550px;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 30px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    margin: 0 auto; /* Center the form horizontally */
+    /* margin-top: 50px;  */
+    box-sizing: border-box; /* Ensure padding and border are included in the width */
+}
+
+.create-service-form h2 {
+    font-size: 32px;
+    /* margin-bottom: 20px; */
+    text-align: center; /* Center the heading */
+}
+
+.create-service-form label {
+    font-size: 18px;
+    /* margin-bottom: 10px; */
+    display: block; /* Ensure labels are on their own line */
+}
+
+.create-service-form input[type="text"],
+.create-service-form input[type="number"],
+.create-service-form textarea,
+.create-service-form input[type="file"],
+.create-service-form button {
+    width: 100%;
+    padding: 10px;
+    
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; /* Ensure padding and border are included in the width */
+}
+
+.create-service-form textarea {
+    height: 150px; /* Set height for textarea */
+}
+
+.create-service-form button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+}
+
+.create-service-form button:hover {
+    background-color: #0056b3;
+}
+
+.create-service-form .success,
+.create-service-form .error {
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center; /* Center the success and error messages */
+}
+
+.create-service-form .success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.create-service-form .error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+
+/* CSS for service images */
+.service-box img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto; /* Center the image horizontally */
+    border-radius: 5px;
+    height: 150px; /* Adjust the height as needed */
+}
+
+
+
+
+
+
+
+
+/* Styles for CategoriesList section */
+.CategoriesList {
+    margin-top: 20px;
+}
+
+/* Styles for the table */
+.CategoriesList table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.CategoriesList table th,
+.CategoriesList table td {
+    padding: 8px;
+    border: 1px solid #ddd;
+}
+
+.CategoriesList table th {
+    background-color: #f2f2f2;
+    text-align: left;
+}
+
+/* Adjust row height based on content */
+.CategoriesList table td {
+    word-wrap: break-word;
+}
+
+/* Button style */
+.CategoriesList table .edit-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 2px 0px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.CategoriesList table .edit-button:hover {
+    background-color: #45a049;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Service container */
+.service-container .service-box-container{
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr)); /* Create a grid with 4 columns */
+    gap: 20px; /* Adjust the gap between service boxes */
+}
+
+/* Service box */
+.service-box {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    overflow: hidden; /* Hide overflowing content */
+}
+
+/* Service box content */
+.service-box h4 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.service-box p {
+    margin-bottom: 10px;
+}
+
+.service-box a {
+    display: inline-block;
+    background-color: #007bff;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.service-box a:hover {
+    background-color: #0056b3;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Booking History Page Styles */
+
+#booking_history {
+    padding: 20px;
+}
+
+#booking_history h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+#booking_history table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+#booking_history th, #booking_history td {
+    padding: 12px;
+    border: 1px solid #ddd;
+}
+
+#booking_history th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    text-align: center;
+}
+
+#booking_history tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#booking_history tbody tr:hover {
+    background-color: #f2f2f2;
+}
+
+
+
+
+
+
+/* Dashboard Page Styles */
+#seller_dashboard {
+    margin-top: 50px;
+    padding: 20px;
+}
+
+#seller_dashboard h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#seller_dashboard p {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Seller's Services Section */
+#seller_services {
+    margin-bottom: 50px;
+}
+
+#seller_services h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+#seller_services table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+#seller_services th, #seller_services td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+#seller_services th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+/* Booked Services Section */
+#booked_services h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+#booked_services table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+#booked_services th, #booked_services td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+#booked_services th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+#status_form {
+    display: inline;
+}
+
+#status_form select {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+
+
+
+
+
+
+
+
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+    header h1 {
+        font-size: 28px;
+    }
+
+    header p {
+        font-size: 16px;
+    }
+
+    .btn {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+
+    .btn-outline {
+        border-width: 1px;
+    }
+
+    .about h2,
+    .services h2 {
+        font-size: 20px;
+    }
+
+    .about p,
+    .services p,
+    .navbar {
+        height: 5vh;
+    }
+
+    .navbar-brand {
+        font-size: 20px;
+    }
+
+    .nav-link {
+        padding: 10px;
+    }
+
+    .footer {
+        height: 5vh;
+        padding: 10px 0;
+    }
+
+
+    #booking_history h2 {
+        font-size: 24px;
+    }
+
+    #booking_history table {
+        font-size: 14px;
+    }
+
+    #booking_history th, #booking_history td {
+        padding: 8px;
+    }
+}
